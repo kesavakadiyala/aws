@@ -30,7 +30,7 @@ case $1 in
 #  ;;
 
   *)
-    echo -e "\e[1,31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
+    echo -e "\e[1;31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
   ;;
 
 esac
