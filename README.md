@@ -12,9 +12,14 @@ After creating User you will be getting "Access key ID" and "Secret access key".
 Using above details configure aws cli in your machine by using below command.
 
 #aws configure
+
 AWS Access Key ID [None]: "Your Access key ID"
+
 AWS Secret Access Key [None]: "Your Secret access key"
+
 Default region name [None]: us-east-2
+
 Default output format [None]:
+
 
 Now you are donw with configuring AWS CLI.
