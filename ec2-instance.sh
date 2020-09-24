@@ -10,13 +10,46 @@ case $1 in
     read type
     echo -n "Security Group Id: "
     read securityGroupId
+    if [ $imageId == "" -o $numberOfInstances == "" -o $type == "" -o $securityGroupId == "" ]; then
+      echo "None of the field shouldn't be empty."
+      exit 1;
+    elif [ $type -eq  0 ]; then
+      echo "Minimum Number of instance must be greater than zero"
+      exit 2;
+    fi
     aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId
   ;;
 
   describe)
-    echo -n "Enter image-id(If multiple , seperated): "
-    read imageId
-    aws ec2 describe-instances --filters "Name=image-id,Values=$imageId"
+    echo -n "Please select on which bases you want to describe: /n1. Image Id/n2. Instance Id/n3. Tag and Value"
+    read input
+    if [ $input -ne 1 -o $input -ne 2 -o $input -ne 3 ]; then
+      echo -e "Please select proper input with in mentioned numbers."
+      exit 2;
+    fi
+    case $input in
+      1)
+        echo -n "Enter Image Id (If multiple , seperated): "
+        read imageId
+        aws ec2 describe-instances --filters "Name=image-id,Values=$imageId"
+      ;;
+      2)
+        echo -n "Enter Instance Id (If multiple , seperated): "
+        read instanceId
+        aws ec2 describe-instances --filters "Name=image-id,Values=$instanceId"
+      ;;
+      3)
+        echo -n "Enter Tag Name: "
+        read tag
+        echo -n "Enter Value of tag: "
+        read value
+        aws ec2 describe-instances --filters "Name=tag:$tag,Values=$value"
+      ;;
+      *)
+        echo -e "\e[1;31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
+      ;;
+    esac
+
   ;;
 
   terminate)
