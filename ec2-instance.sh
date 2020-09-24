@@ -21,10 +21,10 @@ case $1 in
   ;;
 
   describe)
-    echo -e "Please select on which bases you want to describe: /n1. Image Id/n2. Instance Id/n3. Tag and Value: "
+    echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value: "
     echo -n "Enter Option: "
     read input
-    if [ $input -ne 1 -o $input -ne 2 ] -o [ $input -ne 3 ]; then
+    if [ $input -ne 1 -o $input -ne 2 ] || [ $input -ne 3 ]; then
       echo -e "Please select proper input with in mentioned numbers."
       exit 2;
     fi
