@@ -29,4 +29,8 @@ case $1 in
 #    aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
 #  ;;
 
+  *)
+    echo -e "\e[1,31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
+  ;;
+
 esac
