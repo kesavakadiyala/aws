@@ -1,8 +1,5 @@
 {
   "ImageId": "ami-0ed9d2e6b42fd9de7",
   "SecurityGroupIds": [ "sg-080116f5f4d75c956" ],
-  "InstanceType": "t2.micro",
-  "Placement": {
-    "AvailabilityZone": "us-east-2"
-  }
+  "InstanceType": "t2.micro"
 }
