@@ -82,12 +82,14 @@ case $operation in
     aws ec2 terminate-instances --instance-ids $instanceId
   ;;
 
+  #Stopping ec2 instances
   4)
     Print "Instance Id: "
     read instanceId
     aws ec2 stop-instances --instance-ids $instanceId
   ;;
 
+  #Starting ec2 instances
   5)
     Print "Instance Id: "
     read instanceId
