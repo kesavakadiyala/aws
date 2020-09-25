@@ -10,11 +10,11 @@ Print_Fail(){
 }
 
 #Main Program
-echo -e "Please select which operation you want to perform: \n1. Create/request\n2. Describe\n3. Terminate \n4.Stop \n5. Start"
+echo -e "Please select which operation you want to perform: \n1. Create/request\n2. Describe\n3. Terminate \n4. Stop \n5. Start"
 Print "Enter Option: "
 read operation
 #Checking input condition
-if [[ $input -ne 1 ]] && [[ $input -ne 2 ]] && [[ $input -ne 3 ]] && [[ $input -ne 4 ]] && [[ $input -ne 5 ]];then
+if [[ $operation -ne 1 ]] && [[ $operation -ne 2 ]] && [[ $operation -ne 3 ]] && [[ $operation -ne 4 ]] && [[ $operation -ne 5 ]];then
    Print_Fail "Please select proper input with in mentioned numbers."
    exit 1;
 fi
