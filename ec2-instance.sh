@@ -1,75 +1,101 @@
 #!bin/bash
 
-case $1 in
-  create|request)
-    echo -n "Enter image-id: "
+#Function for printing input requests
+Print(){
+  echo -n -e "\e[33m$1\e[0m";
+}
+#Function for printing Failed Messsages
+Print_Fail(){
+  echo -e "\e[1;31m$1\e[0m";
+}
+
+#Main Program
+echo -e "Please select which operation you want to perform: \n1. Create/request\n2. Describe\n3. Terminate \n4.Stop \n5. Start"
+Print "Enter Option: "
+read operation
+#Checking input condition
+if [[ $input -ne 1 ]] && [[ $input -ne 2 ]] && [[ $input -ne 3 ]] && [[ $input -ne 4 ]] && [[ $input -ne 5 ]];then
+   Print_Fail "Please select proper input with in mentioned numbers."
+   exit 1;
+fi
+
+case $operation in
+  #Creating ec2 instance
+  1)
+    Print "Enter image-id: "
     read imageId
-    echo -n "Number of Instances: "
+    Print "Number of Instances: "
     read numberOfInstances
-    echo -n "Instance Type [EX: t2.micro]: "
+    Print "Instance Type [EX: t2.micro]: "
     read type
-    echo -n "Security Group Id: "
+    Print "Security Group Id: "
     read securityGroupId
     if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]];then
-      echo "None of the field shouldn't be empty."
+      Print_Fail "None of the field shouldn't be empty."
       exit 1;
     elif [ $numberOfInstances -eq  0 ]; then
-      echo "Minimum Number of instance must be greater than zero"
+      Print_Fail "Minimum Number of instance must be greater than zero"
       exit 1;
     fi
     aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId
   ;;
 
-  describe)
-    echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value: "
-    echo -n "Enter Option: "
+  #Describing ec2 instance
+  2)
+    echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value "
+    Print "Enter Option: "
     read input
+    #Checking input condition
     if [[ $input -ne 1 ]] && [[ $input -ne 2 ]] && [[ $input -ne 3 ]];then
-      echo -e "Please select proper input with in mentioned numbers."
+      Print_Fail "Please select proper input with in mentioned numbers."
       exit 2;
     fi
+    #Requesting input based on above selection and Describing accordingly
     case $input in
       1)
-        echo -n "Enter Image Id (If multiple , seperated): "
+        Print "Enter Image Id (If multiple , seperated): "
         read imageId
         aws ec2 describe-instances --filters "Name=image-id,Values=$imageId"
       ;;
       2)
-        echo -n "Enter Instance Id (If multiple , seperated): "
+        Print "Enter Instance Id (If multiple , seperated): "
         read instanceId
         aws ec2 describe-instances --filters "Name=image-id,Values=$instanceId"
       ;;
       3)
-        echo -n "Enter Tag Name: "
+        Print "Enter Tag Name: "
         read tag
-        echo -n "Enter Value of tag: "
+        Print "Enter Value of tag: "
         read value
         aws ec2 describe-instances --filters "Name=tag:$tag,Values=$value"
       ;;
       *)
-        echo -e "\e[1;31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
+        Print_Fail "Please mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate"
       ;;
     esac
-
   ;;
 
-  terminate)
-    echo -n "Instance Id: "
+  #Terminating ec2 instances
+  3)
+    Print "Instance Id: "
     read instanceId
     aws ec2 terminate-instances --instance-ids $instanceId
   ;;
 
-  stop)
-    echo -n "Instance Id: "
+  4)
+    Print "Instance Id: "
     read instanceId
     aws ec2 stop-instances --instance-ids $instanceId
   ;;
-#  tag)
-#    aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
-#  ;;
+
+  5)
+    Print "Instance Id: "
+    read instanceId
+    aws ec2 start-instances --instance-ids $instanceId
+  ;;
 
   *)
-    echo -e "\e[1;31mPlease mention proper input for $0 script. \nUsage: sh Project.sh create|describe|terminate\e[0m"
+    Print_Fail "Please enter proper input within the mentioned range."
   ;;
 
 esac
