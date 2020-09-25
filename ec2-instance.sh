@@ -13,7 +13,7 @@ case $1 in
     if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]];then
       echo "None of the field shouldn't be empty."
       exit 1;
-    elif [ $type -eq  0 ]; then
+    elif [ $numberOfInstances -eq  0 ]; then
       echo "Minimum Number of instance must be greater than zero"
       exit 1;
     fi
