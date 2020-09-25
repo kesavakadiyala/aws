@@ -10,12 +10,12 @@ case $1 in
     read type
     echo -n "Security Group Id: "
     read securityGroupId
-    if [ $imageId == "" -o $numberOfInstances == "" -o $type == "" -o $securityGroupId == "" ]; then
+    if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]];then
       echo "None of the field shouldn't be empty."
       exit 1;
     elif [ $type -eq  0 ]; then
       echo "Minimum Number of instance must be greater than zero"
-      exit 2;
+      exit 1;
     fi
     aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId
   ;;
@@ -24,7 +24,7 @@ case $1 in
     echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value: "
     echo -n "Enter Option: "
     read input
-    if [ $input -ne 1 -o $input -ne 2 ] || [ $input -ne 3 ]; then
+    if [[ $input -ne 1 ]] && [[ $input -ne 2 ]] && [[ $input -ne 3 ]];then
       echo -e "Please select proper input with in mentioned numbers."
       exit 2;
     fi
@@ -59,6 +59,11 @@ case $1 in
     aws ec2 terminate-instances --instance-ids $instanceId
   ;;
 
+  stop)
+    echo -n "Instance Id: "
+    read instanceId
+    aws ec2 stop-instances --instance-ids $instanceId
+  ;;
 #  tag)
 #    aws ec2 create-tags --resources i-5203422c --tags Key=Name,Value=MyInstance
 #  ;;
