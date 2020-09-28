@@ -30,6 +30,11 @@ case $operation in
     read type
     Print "Security Group Id: "
     read securityGroupId
+    Print "Enter Tag Name and Value"
+    Print "Tag Name: "
+    read tagName
+    Print "Tag Value"
+    read tagValue
     if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]];then
       Print_Fail "None of the field shouldn't be empty."
       exit 1;
@@ -37,7 +42,7 @@ case $operation in
       Print_Fail "Minimum Number of instance must be greater than zero"
       exit 1;
     fi
-    aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId
+    aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId --tag-specifications "ResourceType=instance,Tags=[{Key=$tagName,Value=$tagValue}]"
   ;;
 
   #Describing ec2 instance
