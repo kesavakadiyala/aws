@@ -14,7 +14,7 @@ echo -e "Please select which operation you want to perform: \n1. Create/request\
 Print "Enter Option: "
 read operation
 #Checking input condition
-if [[ $operation -ne 1 ]] || [[ $operation -ne 2 ]] || [[ $operation -ne 3 ]] || [[ $operation -ne 4 ]] || [[ $operation -ne 5 ]];then
+if [[ $operation -ne 1 ]] && [[ $operation -ne 2 ]] && [[ $operation -ne 3 ]] && [[ $operation -ne 4 ]] && [[ $operation -ne 5 ]];then
    Print_Fail "Please select proper input with in mentioned numbers."
    exit 1;
 fi
