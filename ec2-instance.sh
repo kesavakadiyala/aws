@@ -30,12 +30,11 @@ case $operation in
     read type
     Print "Security Group Id: "
     read securityGroupId
-    Print "Enter Tag Name and Value"
-    Print "Tag Name: "
+    Print "Enter Tag Name and Value \nTag Name: "
     read tagName
     Print "Tag Value"
     read tagValue
-    if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]];then
+    if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]] && [[ "$tagName" == "" ]] && [[ "$tagValue" == "" ]];then
       Print_Fail "None of the field shouldn't be empty."
       exit 1;
     elif [ $numberOfInstances -eq  0 ]; then
