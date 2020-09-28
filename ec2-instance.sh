@@ -14,7 +14,7 @@ echo -e "Please select which operation you want to perform: \n1. Create/request\
 Print "Enter Option: "
 read operation
 #Checking input condition
-if [[ $operation -ne 1 ]] && [[ $operation -ne 2 ]] && [[ $operation -ne 3 ]] && [[ $operation -ne 4 ]] && [[ $operation -ne 5 ]];then
+if [[ $operation -ne 1 ]] || [[ $operation -ne 2 ]] || [[ $operation -ne 3 ]] || [[ $operation -ne 4 ]] || [[ $operation -ne 5 ]];then
    Print_Fail "Please select proper input with in mentioned numbers."
    exit 1;
 fi
@@ -32,9 +32,9 @@ case $operation in
     read securityGroupId
     Print "Enter Tag Name and Value \nTag Name: "
     read tagName
-    Print "Tag Value"
+    Print "Tag Value: "
     read tagValue
-    if [[ "$imageId" == "" ]] && [[ "$numberOfInstances" == "" ]] && [[ "$type" == "" ]] && [[ "$securityGroupId" == "" ]] && [[ "$tagName" == "" ]] && [[ "$tagValue" == "" ]];then
+    if [[ "$imageId" == "" ]] || [[ "$numberOfInstances" == "" ]] || [[ "$type" == "" ]] || [[ "$securityGroupId" == "" ]] || [[ "$tagName" == "" ]] || [[ "$tagValue" == "" ]];then
       Print_Fail "None of the field shouldn't be empty."
       exit 1;
     elif [ $numberOfInstances -eq  0 ]; then
@@ -46,9 +46,9 @@ case $operation in
 
   #Describing ec2 instance
   2)
-    echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value "
-    Print "Enter Option: "
-    read input
+      echo -e "Please select on which bases you want to describe: \n1. Image Id\n2. Instance Id\n3. Tag and Value "
+      Print "Enter Option: "
+      read input
     #Checking input condition
     if [[ $input -ne 1 ]] && [[ $input -ne 2 ]] && [[ $input -ne 3 ]];then
       Print_Fail "Please select proper input with in mentioned numbers."
