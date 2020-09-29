@@ -34,14 +34,16 @@ case $operation in
     read tagName
     Print "Tag Value: "
     read tagValue
-    if [[ "$imageId" == "" ]] || [[ "$numberOfInstances" == "" ]] || [[ "$type" == "" ]] || [[ "$securityGroupId" == "" ]] || [[ "$tagName" == "" ]] || [[ "$tagValue" == "" ]];then
+    Print "Enter Key Pair Name: "
+    read keyPairName
+    if [[ "$imageId" == "" ]] || [[ "$numberOfInstances" == "" ]] || [[ "$type" == "" ]] || [[ "$securityGroupId" == "" ]] || [[ "$tagName" == "" ]] || [[ "$tagValue" == "" ]] || [[ "$keyPairName" == "" ]];then
       Print_Fail "None of the field shouldn't be empty."
       exit 1;
     elif [ $numberOfInstances -eq  0 ]; then
       Print_Fail "Minimum Number of instance must be greater than zero"
       exit 1;
     fi
-    aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId --tag-specifications "ResourceType=instance,Tags=[{Key=$tagName,Value=$tagValue}]"
+    aws ec2 run-instances --image-id $imageId --count $numberOfInstances --instance-type $type --security-group-ids $securityGroupId --tag-specifications "ResourceType=instance,Tags=[{Key=$tagName,Value=$tagValue}]" --key-name $keyPairName
   ;;
 
   #Describing ec2 instance
