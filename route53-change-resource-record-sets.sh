@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -rf /root/hosts
+
 for i in *.json ; do
   COMPONENT=$(echo $i | sed -e 's/.json//')
   IP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}" --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
