@@ -10,4 +10,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-aws ec2 request-spot-fleet --spot-fleet-request-config file://$i
+aws ec2 request-spot-fleet --spot-fleet-request-config file://$1
