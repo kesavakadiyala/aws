@@ -4,38 +4,31 @@
   "TargetCapacity": 1,
   "ValidFrom": "2022-02-03T04:15:47Z",
   "ValidUntil": "2023-02-03T04:15:47Z",
-  "SpotPrice": "0.0031",
+  "SpotPrice": "0.166",
   "TerminateInstancesWithExpiration": true,
-  "LaunchSpecifications": [
     {
-      "ImageId": "ami-096b13a4e5ae8f9d6",
-      "InstanceType": "t3.micro",
-      "SubnetId": "subnet-78bd671e, subnet-2c20810d, subnet-7689e33b, subnet-9e6ccbc1, subnet-dd4fa1ec, subnet-0ca63a02",
-      "KeyName": "devops",
-      "BlockDeviceMappings": [
-        {
-          "DeviceName": "/dev/sda1",
-          "Ebs": {
-            "DeleteOnTermination": true,
-            "SnapshotId": "snap-0c8dfb7f14594dd45",
-            "VolumeSize": 16,
-            "VolumeType": "gp2",
-            "Encrypted": false
-          }
-        },
-        {
-          "DeviceName": "/dev/xvdb",
-          "VirtualName": "ephemeral0"
-        },
-        {
-          "DeviceName": "/dev/xvdc",
-          "VirtualName": "ephemeral1"
-        }
-      ],
-      "SpotPrice": "0.0031",
-      "SecurityGroups": [
-        {
-          "GroupId": "sg-029fe0e5bb46913ce"
+            "ImageId": "ami-096b13a4e5ae8f9d6",
+            "InstanceType": "t3.micro",
+            "SubnetId": "subnet-78bd671e, subnet-2c20810d, subnet-7689e33b, subnet-9e6ccbc1, subnet-dd4fa1ec, subnet-0ca63a02",
+            "KeyName": "devops",
+            "BlockDeviceMappings": [
+                {
+                    "DeviceName": "/dev/sda1",
+                    "Ebs": {
+                        "DeleteOnTermination": true,
+                        "SnapshotId": "snap-0c8dfb7f14594dd45",
+                        "VolumeSize": 16,
+                        "VolumeType": "gp2",
+                        "Encrypted": false
+                    }
+                }
+            ],
+            "SpotPrice": "0.0031",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-029fe0e5bb46913ce"
+                }
+            ]
         }
       ],
       "TagSpecifications": [
