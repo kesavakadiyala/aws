@@ -2,13 +2,13 @@
     "IamFleetRole": "arn:aws:iam::342998638422:role/aws-ec2-spot-fleet-tagging-role",
     "AllocationStrategy": "lowestPrice",
     "TargetCapacity": 1,
-    "ValidFrom": "2022-02-03T04:15:47Z",
-    "ValidUntil": "2023-02-03T04:15:47Z",
+    "ValidFrom": "2022-02-07T06:18:39Z",
+    "ValidUntil": "2023-02-07T06:18:39Z",
     "SpotPrice": "0.166",
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
         {
-            "ImageId": "ami-096b13a4e5ae8f9d6",
+            "ImageId": "ami-0d7bd52c01fd40a0a",
             "InstanceType": "t3.micro",
             "SubnetId": "subnet-78bd671e, subnet-2c20810d, subnet-7689e33b, subnet-9e6ccbc1, subnet-dd4fa1ec, subnet-0ca63a02",
             "KeyName": "devops",
@@ -17,7 +17,7 @@
                     "DeviceName": "/dev/sda1",
                     "Ebs": {
                         "DeleteOnTermination": true,
-                        "SnapshotId": "snap-0c8dfb7f14594dd45",
+                        "SnapshotId": "snap-02c3739ea841f8755",
                         "VolumeSize": 16,
                         "VolumeType": "gp2",
                         "Encrypted": false
@@ -30,29 +30,29 @@
                     "GroupId": "sg-029fe0e5bb46913ce"
                 }
             ],
-			"TagSpecifications": [
-				{
-					"ResourceType": "instance",
-					"Tags": [
-						{
-							"Key": "Name",
-							"Value": "frontend"
-						}
-					]
-				}
-			]
+            "TagSpecifications": [
+                {
+                    "ResourceType": "instance",
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "frontend"
+                        }
+                    ]
+                }
+            ]
         }
     ],
-    "Type": "maintain",
-	"TagSpecifications": [
-		{
-			"ResourceType": "spot-fleet-request",
-			"Tags": [
-				{
-					"Key": "Name",
-					"Value": "frontend"
-				}
-			]
-		}
-	]
+    "Type": "request",
+    "TagSpecifications": [
+        {
+            "ResourceType": "spot-fleet-request",
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "frontend"
+                }
+            ]
+        }
+    ]
 }
