@@ -30,7 +30,6 @@
                 }
             ]
         }
-      ],
       "TagSpecifications": [
         {
           "ResourceType": "instance",
