@@ -1,12 +1,13 @@
 {
-  "IamFleetRole": "arn:aws:iam::342998638422:role/aws-ec2-spot-fleet-tagging-role",
-  "AllocationStrategy": "lowestPrice",
-  "TargetCapacity": 1,
-  "ValidFrom": "2022-02-03T04:15:47Z",
-  "ValidUntil": "2023-02-03T04:15:47Z",
-  "SpotPrice": "0.166",
-  "TerminateInstancesWithExpiration": true,
-    {
+    "IamFleetRole": "arn:aws:iam::342998638422:role/aws-ec2-spot-fleet-tagging-role",
+    "AllocationStrategy": "lowestPrice",
+    "TargetCapacity": 1,
+    "ValidFrom": "2022-02-03T04:15:47Z",
+    "ValidUntil": "2023-02-03T04:15:47Z",
+    "SpotPrice": "0.166",
+    "TerminateInstancesWithExpiration": true,
+    "LaunchSpecifications": [
+        {
             "ImageId": "ami-096b13a4e5ae8f9d6",
             "InstanceType": "t3.micro",
             "SubnetId": "subnet-78bd671e, subnet-2c20810d, subnet-7689e33b, subnet-9e6ccbc1, subnet-dd4fa1ec, subnet-0ca63a02",
@@ -28,31 +29,30 @@
                 {
                     "GroupId": "sg-029fe0e5bb46913ce"
                 }
-            ]
+            ],
+			"TagSpecifications": [
+				{
+					"ResourceType": "instance",
+					"Tags": [
+						{
+							"Key": "Name",
+							"Value": "frontend"
+						}
+					]
+				}
+			]
         }
-      "TagSpecifications": [
-        {
-          "ResourceType": "instance",
-          "Tags": [
-            {
-              "Key": "Name",
-              "Value": "frontend"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "Type": "maintain",
-  "TagSpecifications": [
-    {
-      "ResourceType": "spot-fleet-request",
-      "Tags": [
-        {
-          "Key": "Name",
-          "Value": "frontend"
-        }
-      ]
-    }
-  ]
+    ],
+    "Type": "maintain",
+	"TagSpecifications": [
+		{
+			"ResourceType": "spot-fleet-request",
+			"Tags": [
+				{
+					"Key": "Name",
+					"Value": "frontend"
+				}
+			]
+		}
+	]
 }
