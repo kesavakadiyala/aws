@@ -36,7 +36,7 @@
                     "Tags": [
                         {
                             "Key": "Name",
-                            "Value": "user"
+                            "Value": "redis"
                         }
                     ]
                 }
@@ -50,7 +50,7 @@
             "Tags": [
                 {
                     "Key": "Name",
-                    "Value": "user"
+                    "Value": "redis"
                 }
             ]
         }
