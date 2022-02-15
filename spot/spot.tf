@@ -1,7 +1,7 @@
 resource "aws_spot_instance_request" "cheap_worker" {
   count         = length(var.apps)
   ami           = data.aws_ami.ami.id
-  spot_price    = "0.04"
+  spot_price    = "0.05"
   instance_type = "r5.large"
 }
 
