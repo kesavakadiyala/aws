@@ -46,7 +46,7 @@ variable "apps" {
 default= ["ELK"]
 }
 
-resource "aws_security_group" "aa" {
+resource "aws_security_group" "Spot" {
 name        = "Spot"
 description = "Spot"
 
