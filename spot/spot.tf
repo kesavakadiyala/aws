@@ -1,8 +1,8 @@
 resource "aws_spot_instance_request" "cheap_worker" {
   count         = length(var.apps)
   ami           = data.aws_ami.ami.id
-  spot_price    = "0.05"
-  instance_type = "r5.large"
+  spot_price    = "0.04"
+  instance_type = "r5dn.large"
 }
 
 //resource "null_resource" "cli" {
@@ -39,7 +39,7 @@ data "aws_ami" "ami" {
 }
 
 provider "aws" {
-region = "us-east-1a"
+region = "us-east-1"
 }
 
 variable "apps" {
