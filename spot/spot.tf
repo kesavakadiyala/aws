@@ -39,7 +39,7 @@ data "aws_ami" "ami" {
 }
 
 provider "aws" {
-region = "us-east-1"
+region = "us-east-1a"
 }
 
 variable "apps" {
