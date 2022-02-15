@@ -34,8 +34,8 @@ resource "aws_spot_instance_request" "cheap_worker" {
 
 data "aws_ami" "ami" {
   most_recent      = true
-  name_regex       = "^Centos*"
-  owners           = ["973714476881"]
+  name_regex       = "^Kesava*"
+  owners           = ["342998638422"]
 }
 
 provider "aws" {
@@ -47,8 +47,8 @@ default= ["ELK"]
 }
 
 resource "aws_security_group" "aa" {
-name        = "aa"
-description = "aa"
+name        = "Spot"
+description = "Spot"
 
 ingress {
 from_port   = 0
