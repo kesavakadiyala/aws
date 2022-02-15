@@ -5,21 +5,21 @@ resource "aws_spot_instance_request" "cheap_worker" {
   instance_type = "r5dn.large"
 }
 
-//resource "null_resource" "cli" {
-//  depends_on = [aws_security_group.aa,aws_spot_instance_request.cheap_worker]
-//  count = length(var.apps)
-//  provisioner "local-exec" {
-//    command = <<EOF
+resource "null_resource" "cli" {
+  depends_on = [aws_security_group.Spot,aws_spot_instance_request.cheap_worker]
+  count = length(var.apps)
+  provisioner "local-exec" {
+    command = <<EOF
 //aws ec2 create-tags --resources ${element(aws_spot_instance_request.cheap_worker.*.spot_instance_id, count.index)} --tags Key=Name,Value=${element(var.apps, count.index)} --region us-east-2
-//aws ec2 modify-instance-attribute --instance-id ${element(aws_spot_instance_request.cheap_worker.*.spot_instance_id, count.index)} --groups ${aws_security_group.aa.id} --region us-east-2
-//EOF
-//  }
+aws ec2 modify-instance-attribute --instance-id ${element(aws_spot_instance_request.cheap_worker.*.spot_instance_id, count.index)} --groups ${aws_security_group.Spot.id} --region us-east-1
+EOF
+ }
 //
 //  provisioner "remote-exec" {
 //    connection {
 //      host = element(aws_spot_instance_request.cheap_worker.*.public_ip, count.index)
 //      user = "root"
-//      password = "DevOps321"
+//      password = "******"
 //    }
 //    inline = [
 //      "disable-auto-shutdown",
@@ -29,7 +29,7 @@ resource "aws_spot_instance_request" "cheap_worker" {
 //      "chown centos:centos shell-scripting -R"
 //    ]
 //  }
-//}
+}
 
 
 data "aws_ami" "ami" {
