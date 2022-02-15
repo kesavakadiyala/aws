@@ -39,7 +39,7 @@ data "aws_ami" "ami" {
 }
 
 provider "aws" {
-region = "us-east-2"
+region = "us-east-1"
 }
 
 variable "apps" {
@@ -65,7 +65,7 @@ cidr_blocks = ["0.0.0.0/0"]
 }
 
 tags = {
-Name = "aa"
+Name = "Spot"
 }
 }
 
