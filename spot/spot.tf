@@ -3,7 +3,7 @@ resource "aws_spot_instance_request" "cheap_worker" {
   ami           = data.aws_ami.ami.id
   spot_price    = "0.04"
   instance_type = "r5dn.large"
-  security_groups = ["${aws_security_group.Spot.id}"]
+  //security_groups = ["${aws_security_group.Spot.id}"]
 }
 
 
