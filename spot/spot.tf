@@ -3,9 +3,11 @@ resource "aws_spot_instance_request" "cheap_worker" {
   ami           = data.aws_ami.ami.id
   spot_price    = "0.04"
   instance_type = "r5dn.large"
+  security_groups = ["${aws_security_group.Spot.id}"]
 }
 
-resource "null_resource" "cli" {
+
+/*resource "null_resource" "cli" {
   depends_on = [aws_security_group.Spot,aws_spot_instance_request.cheap_worker]
   count = length(var.apps)
   provisioner "local-exec" {
@@ -13,7 +15,7 @@ resource "null_resource" "cli" {
 aws ec2 create-tags --resources ${element(aws_spot_instance_request.cheap_worker.*.spot_instance_id, count.index)} --tags Key=Name,Value=${element(var.apps, count.index)} --region us-east-1
 aws ec2 modify-instance-attribute --instance-id ${element(aws_spot_instance_request.cheap_worker.*.spot_instance_id, count.index)} --groups ${aws_security_group.Spot.id} --region us-east-1
 EOF
- }
+ }*/
 //
 //  provisioner "remote-exec" {
 //    connection {
@@ -29,7 +31,7 @@ EOF
 //      "chown centos:centos shell-scripting -R"
 //    ]
 //  }
-}
+//}
 
 
 data "aws_ami" "ami" {
