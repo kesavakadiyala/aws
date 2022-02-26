@@ -1,0 +1,9 @@
+{
+  "ImageId": "ami-0d7bd52c01fd40a0a",
+  "KeyName": "Server",
+  "SecurityGroupIds": [ "sg-029fe0e5bb46913ce" ],
+  "InstanceType": "t3.micro",
+  "Placement": {
+    "AvailabilityZone": "us-east-1b"
+  }
+}
