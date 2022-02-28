@@ -36,7 +36,7 @@ EOF
 
 data "aws_ami" "ami" {
   most_recent      = true
-  name_regex       = "^Kesava*"
+  name_regex       = "^Centos7-Kesava"
   owners           = ["342998638422"]
 }
 

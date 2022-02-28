@@ -1,5 +1,5 @@
 {
-  "ImageId": "ami-0d7bd52c01fd40a0a",
+  "ImageId": "ami-0059a5a8a80ac4f67",
   "KeyName": "Server",
   "SecurityGroupIds": [ "sg-0369a467731a4cf9d" ],
   "InstanceType": "t3.micro",

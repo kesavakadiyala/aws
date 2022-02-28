@@ -8,7 +8,7 @@
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
         {
-            "ImageId": "ami-0d7bd52c01fd40a0a",
+            "ImageId": "ami-0059a5a8a80ac4f67",
             "InstanceType": "t3.micro",
             "SubnetId": "subnet-78bd671e, subnet-2c20810d, subnet-7689e33b, subnet-9e6ccbc1, subnet-dd4fa1ec, subnet-0ca63a02",
             "KeyName": "devops",
